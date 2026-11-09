@@ -1,0 +1,7 @@
+[
+  {"id": "velocity_24h", "label": "views in first 24h", "value": 1990000, "unit": "views", "query": "analytics export"},
+  {"id": "velocity_72h", "label": "views in first 72h", "value": 3480000, "unit": "views", "query": "analytics export"},
+  {"id": "eng_rate", "label": "engagement rate", "value": 0.0849, "unit": "ratio", "query": "(likes+comments+shares)/views"},
+  {"id": "n_posts", "label": "posts tracked", "value": 3, "unit": "count", "query": "COUNT(posts)"},
+  {"id": "saves", "label": "saves", "value": 12400, "unit": "count", "query": "analytics export", "cue": "saves?"}
+]

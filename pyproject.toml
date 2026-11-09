@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "groundcheck-claim-verifier"
+version = "1.0.0"
+description = "Claim-level verification of AI-written analytics: every number must be real AND on the right metric. Evals, golden set, judge calibration"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+postgres = ["psycopg[binary]>=3.1"]
+
+[project.scripts]
+groundcheck = "groundcheck.cli:main"
+
+[tool.setuptools.package-data]
+groundcheck = ["schema.sql"]
