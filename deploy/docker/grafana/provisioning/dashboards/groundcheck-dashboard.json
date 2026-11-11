@@ -1,0 +1,80 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 0 },
+      "id": 1,
+      "title": "Total Claims Verified",
+      "type": "stat",
+      "targets": [
+        { "expr": "groundcheck_claims_verified_total", "refId": "A" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 6, "w": 6, "x": 6, "y": 0 },
+      "id": 2,
+      "title": "Misattributed Claims Detected",
+      "type": "stat",
+      "targets": [
+        { "expr": "groundcheck_misattributions_total", "refId": "A" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 0 },
+      "id": 3,
+      "title": "Unsupported Numbers (Hallucinations)",
+      "type": "stat",
+      "targets": [
+        { "expr": "groundcheck_unsupported_total", "refId": "A" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 6, "w": 6, "x": 18, "y": 0 },
+      "id": 4,
+      "title": "Style & Causality Flags",
+      "type": "stat",
+      "targets": [
+        { "expr": "groundcheck_style_violations_total", "refId": "A" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 6 },
+      "id": 5,
+      "title": "API Request Rate (req/sec)",
+      "type": "timeseries",
+      "targets": [
+        { "expr": "sum(rate(groundcheck_http_requests_total[1m])) by (endpoint, status)", "legendFormat": "{{endpoint}} ({{status}})", "refId": "A" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 6 },
+      "id": 6,
+      "title": "API Request Latency",
+      "type": "timeseries",
+      "targets": [
+        { "expr": "rate(groundcheck_http_request_duration_seconds_sum[1m]) / rate(groundcheck_http_request_duration_seconds_count[1m])", "legendFormat": "{{endpoint}} avg latency (s)", "refId": "A" }
+      ]
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": ["groundcheck", "ai-evaluation"],
+  "time": { "from": "now-15m", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "GroundCheck Claim Verifier Overview",
+  "version": 1
+}

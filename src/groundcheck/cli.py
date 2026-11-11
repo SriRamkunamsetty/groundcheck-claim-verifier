@@ -46,6 +46,10 @@ def build_parser():
     gd.add_argument("--save", action="store_true"); gd.add_argument("--validation-dir", default="validation")
     k = sub.add_parser("check-llm", help="live smoke test of an LLM key"); k.add_argument("--provider", choices=["anthropic", "gemini"])
     w = sub.add_parser("serve", parents=[common], help="the claim bench"); w.add_argument("--host", default="127.0.0.1"); w.add_argument("--port", type=int, default=8000)
+    api_cmd = sub.add_parser("serve-api", parents=[common], help="launch production FastAPI service with OpenAPI, metrics, and health probes")
+    api_cmd.add_argument("--host", default="0.0.0.0")
+    api_cmd.add_argument("--port", type=int, default=8000)
+    api_cmd.add_argument("--workers", type=int, default=1)
     return p
 
 
@@ -119,6 +123,11 @@ def _dispatch(a):
     elif a.cmd == "serve":
         from .web import serve
         serve(open_db(a), a.host, a.port)
+    elif a.cmd == "serve-api":
+        import uvicorn
+        from .api import create_app
+        app = create_app(None if a.demo else a.db)
+        uvicorn.run(app, host=a.host, port=a.port, workers=a.workers)
 
 
 if __name__ == "__main__":

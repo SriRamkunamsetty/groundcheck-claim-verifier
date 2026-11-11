@@ -1,0 +1,18 @@
+apiVersion: v2
+name: groundcheck
+description: Production Helm chart for GroundCheck Claim Verifier - Enterprise AI analytics claim-level verification platform.
+type: application
+version: 2.0.0
+appVersion: "2.0.0"
+keywords:
+  - ai-evaluation
+  - claim-verification
+  - fact-checking
+  - llm-evals
+  - hallucination-detection
+home: https://github.com/SriRamkunamsetty/groundcheck-claim-verifier
+sources:
+  - https://github.com/SriRamkunamsetty/groundcheck-claim-verifier
+maintainers:
+  - name: SriRamKunamsetty
+    email: mohansriramkunamsetty@gmail.com
